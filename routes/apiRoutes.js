@@ -14,7 +14,6 @@ router.get(
 router.post(
     "/stripe",
     loginRequired,
-    creditRequired,
     async (req, res) => {
         const { token } = req.body;
         const charge = await stripe.charges.create({
