@@ -27,6 +27,19 @@ app.use("/auth", authRouter);
 app.use("/profile", profileRouter);
 app.use("/api", apiRouter);
 
+const path = require("path");
+
+if (process.env.NODE_ENV === "production") {
+    // Express will serve up production assets like our main.js and like main.css file
+    app.use(express.static('client/build'));
+
+    // Express will serve up the index.html file if it does not the recognize the route
+    const path = require("path");
+    app.get('*', (req, res) => {
+        res.sendfile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+    });
+}
+
 // DB connection
 mongoose.connect(keys.mongoDb.dbURI);
 
