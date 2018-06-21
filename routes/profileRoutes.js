@@ -1,17 +1,9 @@
 const router = require("express").Router();
-
-const authCheck = (req, res, next) => {
-    const user = req.user;
-    if (user) {
-        next();
-    } else {
-        res.send("User not found")
-    }
-}
+const loginRequired = require("../middlewares/loginRequired.js");
 
 router.get(
     "/", 
-    authCheck,
+    loginRequired,
     (req, res) => {
         const user = req.user;
 

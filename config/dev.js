@@ -8,5 +8,9 @@ module.exports = {
     },
     cookieSession: {
         keys: ["qwdfskglsmflad"]
+    },
+    stripe: {
+        publisableKey: "pk_test_82A7fyR7n17QK69WHpWEmHxp",
+        secretKey: "sk_test_X0RUGKNbcVOaaw0OKlj3LeDb"
     }
 };
