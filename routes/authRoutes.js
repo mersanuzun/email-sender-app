@@ -27,7 +27,6 @@ router.get(
 
 router.get(
     "/current_user",
-    loginRequired,
     (req, res) => {
         res.send(req.user);
     }
