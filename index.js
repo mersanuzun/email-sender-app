@@ -1,13 +1,20 @@
 const express = require("express");
+//import routers
 const authRouter = require("./routes/authRoutes.js");
 const profileRouter = require("./routes/profileRoutes.js");
 const apiRouter = require("./routes/apiRoutes.js");
+const surveyRouter = require("./routes/surveyRoutes");
+const billingRouter = require("./routes/billingRoutes");
+
 require("./services/passport.js");
 const mongoose = require("mongoose");
 const keys = require("./config/keys.js");
 const cookieSession = require("cookie-session");
-var bodyParser = require('body-parser')
+var bodyParser = require('body-parser');
 const passport = require("passport");
+
+require("./models/Survey");
+require("./models/User");
 
 const app = express();
 
@@ -26,6 +33,8 @@ app.use(passport.session());
 app.use("/auth", authRouter);
 app.use("/profile", profileRouter);
 app.use("/api", apiRouter);
+app.use("/api", surveyRouter);
+app.use("/api", billingRouter);
 
 const path = require("path");
 

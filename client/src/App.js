@@ -3,12 +3,16 @@ import { BrowserRouter, Route } from "react-router-dom";
 import "materialize-css/dist/css/materialize.min.css";
 import Header from "./components/Header.js";
 import DashBoard from "./components/DashBoard.js";
+import SurveyNew from "./components/survey/NewSurvey";
 import { connect } from "react-redux";
 import * as actions from "./actions";
+import axios from "axios";
 
 const Landing = () => <h1>{"Landing"}</h1>;
-const SurveyNew = () => <h1>{"Survey"}</h1>;
 
+if (process.env.NODE_ENV !== "production") {
+  window.axios = axios;
+}
 
 class App extends Component {
 
@@ -19,7 +23,7 @@ class App extends Component {
   render() {
     return (
       <BrowserRouter>
-        <div>
+        <div className="container">
           <Header />
           <Route exact path="/" component={Landing} />
           <Route exact path="/surveys" component={DashBoard} />

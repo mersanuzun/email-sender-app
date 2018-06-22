@@ -4,7 +4,7 @@ import axios from "axios";
 export const fetchUser = () => {
     return (dispatch) => {
         axios
-            .get("/api/current_user")
+            .get("/auth/current_user")
             .then((res) => {
                 dispatch(
                     {
@@ -33,5 +33,13 @@ export const sendStripeToken = (token) => {
                     }
                 )
             })
+    }
+}
+
+export const submitSurvey = (surveyData, changeRoute) => {
+    return async (dispatch) => {
+        const resp = await axios.post("/api/surveys", surveyData)
+        changeRoute();
+        dispatch({type: "a"})
     }
 }

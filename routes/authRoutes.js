@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const passport = require("passport");
+const loginRequired = require("../middlewares/loginRequired");
 
 router.get(
     "/google", 
@@ -21,6 +22,14 @@ router.get(
     (req, res) => {
         req.logout();
         res.redirect("/")
+    }
+)
+
+router.get(
+    "/current_user",
+    loginRequired,
+    (req, res) => {
+        res.send(req.user);
     }
 )
 
