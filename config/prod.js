@@ -12,5 +12,11 @@ module.exports = {
     stripe: {
         publisableKey: "pk_test_82A7fyR7n17QK69WHpWEmHxp",
         secretKey: "sk_test_X0RUGKNbcVOaaw0OKlj3LeDb"
+    },
+    sendGrid: {
+        apiKey: "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"
+    },
+    server: {
+        domain: "https://radiant-depths-41824.herokuapp.com/surveys"
     }
 };

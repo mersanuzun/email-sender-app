@@ -3,11 +3,11 @@ import { connect } from "react-redux";
 import surveyFields from "./surveyFields";
 import { withRouter } from "react-router";
 import * as actions from "../../actions";
+import Loading from "../Loading";
 
 class SurveyReview extends React.Component {
 
     render() {
-        console.log(this.props)
         return (
             <div className="survey-review-wrapper">
                 <div className="survey-review">
@@ -37,9 +37,11 @@ class SurveyReview extends React.Component {
                         this.props.formValues,
                         () => this.props.history.push("/surveys")
                     )}
-                    className="waves-effect green right btn-flat white-text"
+                    className={"green right btn-flat white-text" + (this.props.survey.isSubmiting ? " disabled" : "")}
                 >
-                    {"Send"}
+                    {
+                        this.props.survey.isSubmiting ? <Loading /> : "Send"
+                    }
                     <i className="large material-icons right">send</i>
                 </button>
             </div>
@@ -47,9 +49,10 @@ class SurveyReview extends React.Component {
     }
 }
 
-const mapStateToProps = ({ form }) => {
+const mapStateToProps = ({ form, survey }) => {
     return {
-        formValues: form.surveyForm.values
+        formValues: form.surveyForm.values,
+        survey
     }
 
 }

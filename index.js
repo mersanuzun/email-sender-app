@@ -1,4 +1,6 @@
 const express = require("express");
+require("./models/Survey");
+require("./models/User");
 //import routers
 const authRouter = require("./routes/authRoutes.js");
 const profileRouter = require("./routes/profileRoutes.js");
@@ -12,9 +14,6 @@ const keys = require("./config/keys.js");
 const cookieSession = require("cookie-session");
 var bodyParser = require('body-parser');
 const passport = require("passport");
-
-require("./models/Survey");
-require("./models/User");
 
 const app = express();
 

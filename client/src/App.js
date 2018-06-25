@@ -9,6 +9,7 @@ import * as actions from "./actions";
 import axios from "axios";
 
 const Landing = () => <h1>{"Landing"}</h1>;
+const SurveyRespond = () => <h1 style={{textAlign: "center"}}>{"Thanks For Responding"}</h1>
 
 if (process.env.NODE_ENV !== "production") {
   window.axios = axios;
@@ -28,6 +29,7 @@ class App extends Component {
           <Route exact path="/" component={Landing} />
           <Route exact path="/surveys" component={DashBoard} />
           <Route exact path="/surveys/new" component={SurveyNew} />
+          <Route exact path="/surveys/:surveyId/:choice" component={SurveyRespond} />
         </div>
       </BrowserRouter>
     );
